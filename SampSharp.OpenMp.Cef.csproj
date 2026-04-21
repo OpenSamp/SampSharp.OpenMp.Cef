@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <RootNamespace>SampSharp.Cef.Entities</RootNamespace>
+        <AssemblyName>SampSharp.OpenMp.Cef</AssemblyName>
+    </PropertyGroup>
+
+    <!--
+        Depends on openmp-sampsharp-x64-poc which lives as a sibling submodule.
+        When this repo is consumed standalone, override via Directory.Build.props
+        or add ProjectReferences manually in the consuming project.
+    -->
+    <ItemGroup>
+        <ProjectReference Include="..\openmp-sampsharp-x64-poc\src\SampSharp.OpenMp.Core\SampSharp.OpenMp.Core.csproj" />
+        <ProjectReference Include="..\openmp-sampsharp-x64-poc\src\SampSharp.OpenMp.Entities\SampSharp.OpenMp.Entities.csproj" />
+    </ItemGroup>
+
+</Project>
