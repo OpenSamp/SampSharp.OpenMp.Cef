@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using SampSharp.Cef.Entities.Interop;
 using SampSharp.Entities;
+using SampSharp.Entities.SAMP;
 using SampSharp.OpenMp.Core;
 using SampSharp.OpenMp.Core.Api;
 
@@ -129,4 +130,12 @@ internal sealed class CefEventSystem : ISystem
         }
         _dispatcher?.Invoke("OnCefEvent", PlayerEntity(playerId), browserId, evName, parsed);
     }
+}
+
+/// <summary>Static holder для IPlayerPool — UnmanagedCallersOnly-методы не могут иметь this.</summary>
+internal static class SampSharpEnvironmentAccessor
+{
+    private static IPlayerPool? _pool;
+    public static void Bind(SampSharpEnvironment env) => _pool = env?.Core.GetPlayers();
+    public static IPlayerPool? TryGetPlayerPool() => _pool;
 }
