@@ -161,3 +161,21 @@ public sealed class CefService : ICefService
     /// </summary>
     private static int EntityIdToPlayer(EntityId id) => id.IsEmpty ? -1 : id.Handle;
 }
+
+/// <summary>
+/// Статические хелперы для extension-методов и других мест, где нет доступа к DI.
+/// Тонкий слой поверх <see cref="CefService"/> — не держит состояния,
+/// зовёт <see cref="Interop.CefInterop"/> напрямую.
+/// </summary>
+public static class CefGlobal
+{
+    /// <summary>Загружен ли Cef.dll в открытом режиме.</summary>
+    public static bool IsAvailable => Interop.CefInterop.Cef_IsAvailable();
+
+    /// <summary>Установил ли клиент CEF-плагин (handshake прошёл).</summary>
+    public static bool PlayerHasPlugin(int playerId) => Interop.CefInterop.Cef_PlayerHasPlugin(playerId);
+
+    /// <summary>Удобная перегрузка для <see cref="EntityId"/>.</summary>
+    public static bool PlayerHasPlugin(EntityId player)
+        => !player.IsEmpty && Interop.CefInterop.Cef_PlayerHasPlugin(player.Handle);
+}
