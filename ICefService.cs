@@ -16,7 +16,7 @@ public interface ICefService
 
     // ----- Session --------------------------------------------------------
 
-    bool PlayerHasPlugin(EntityId player);
+    bool PlayerHasPlugin(Player player);
     bool PlayerHasPlugin(int playerId);
 
     /// <summary>
@@ -27,15 +27,15 @@ public interface ICefService
 
     // ----- Browser lifecycle ---------------------------------------------
 
-    void CreateBrowser(EntityId player, int browserId, string url, bool focused, bool controlsChat = true);
-    void CreateWorldBrowser(EntityId player, int browserId, string url, string textureName, float width, float height);
-    void CreateWorld2DBrowser(EntityId player, int browserId, string url,
+    void CreateBrowser(Player player, int browserId, string url, bool focused, bool controlsChat = true);
+    void CreateWorldBrowser(Player player, int browserId, string url, string textureName, float width, float height);
+    void CreateWorld2DBrowser(Player player, int browserId, string url,
         float worldX, float worldY, float worldZ,
         float width = 0f, float height = 0f, float offsetZ = 0f, float pivotX = 0f, float pivotY = 0f);
-    void SetWorld2DBrowserPos(EntityId player, int browserId, float worldX, float worldY, float worldZ);
+    void SetWorld2DBrowserPos(Player player, int browserId, float worldX, float worldY, float worldZ);
 
-    void SetBrowserVisible(EntityId player, int browserId, bool visible);
-    void DestroyBrowser(EntityId player, int browserId);
+    void SetBrowserVisible(Player player, int browserId, bool visible);
+    void DestroyBrowser(Player player, int browserId);
 
     // ----- Events ---------------------------------------------------------
 
@@ -48,37 +48,37 @@ public interface ICefService
     void RegisterEvent(string name, string callback, params CefArgType[] signature);
 
     /// <summary>Отправляет событие в JS конкретного браузера.</summary>
-    void EmitEvent(EntityId player, int browserId, string name, params CefArg[] args);
+    void EmitEvent(Player player, int browserId, string name, params CefArg[] args);
 
     // ----- Browser utilities ---------------------------------------------
 
-    void ReloadBrowser(EntityId player, int browserId, bool ignoreCache = false);
-    void FocusBrowser(EntityId player, int browserId, bool focused);
-    void EnableDevTools(EntityId player, int browserId, bool enabled);
+    void ReloadBrowser(Player player, int browserId, bool ignoreCache = false);
+    void FocusBrowser(Player player, int browserId, bool focused);
+    void EnableDevTools(Player player, int browserId, bool enabled);
 
-    void AttachBrowserToObject(EntityId player, int browserId, int objectId);
-    void DetachBrowserFromObject(EntityId player, int browserId, int objectId);
+    void AttachBrowserToObject(Player player, int browserId, int objectId);
+    void DetachBrowserFromObject(Player player, int browserId, int objectId);
 
     // ----- Audio ----------------------------------------------------------
 
-    void SetBrowserMuted(EntityId player, int browserId, bool muted);
-    void SetBrowserAudioMode(EntityId player, int browserId, CefAudioMode mode);
-    void SetBrowserAudioSettings(EntityId player, int browserId, float maxDistance, float referenceDistance);
+    void SetBrowserMuted(Player player, int browserId, bool muted);
+    void SetBrowserAudioMode(Player player, int browserId, CefAudioMode mode);
+    void SetBrowserAudioSettings(Player player, int browserId, float maxDistance, float referenceDistance);
 
     // ----- HUD / chat -----------------------------------------------------
 
-    void ToggleHudComponent(EntityId player, CefHudComponent component, bool toggle);
-    void ToggleSpawnScreen(EntityId player, bool toggle);
-    void ClearChat(EntityId player);
-    void ToggleChatInput(EntityId player, bool toggle);
-    bool IsChatInputOpen(EntityId player);
+    void ToggleHudComponent(Player player, CefHudComponent component, bool toggle);
+    void ToggleSpawnScreen(Player player, bool toggle);
+    void ClearChat(Player player);
+    void ToggleChatInput(Player player, bool toggle);
+    bool IsChatInputOpen(Player player);
 
     // ----- Key capture ----------------------------------------------------
 
-    void SetKeyCapture(EntityId player, bool enabled);
-    void EnableKey(EntityId player, int virtualKey, bool enabled);
+    void SetKeyCapture(Player player, bool enabled);
+    void EnableKey(Player player, int virtualKey, bool enabled);
 
     // ----- Misc -----------------------------------------------------------
 
-    void ExitGame(EntityId player);
+    void ExitGame(Player player);
 }
