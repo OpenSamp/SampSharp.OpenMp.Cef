@@ -24,13 +24,13 @@ namespace
     ICefComponent* g_cef = nullptr;
 
     // ---- Managed callback function pointers ----
-    using FnInitialize      = void (__cdecl*)(int /*pid*/, unsigned char /*success*/, int /*reason*/, const char* /*message*/);
-    using FnReady           = void (__cdecl*)(int);
-    using FnBrowserCreated  = void (__cdecl*)(int /*pid*/, int /*browser*/, unsigned char /*success*/, int /*code*/, const char* /*reason*/);
-    using FnPlayerOnly      = void (__cdecl*)(int);
-    using FnPressKey        = void (__cdecl*)(int /*pid*/, int /*key*/, int /*scan*/, int /*mod*/, unsigned char /*down*/, unsigned char /*repeat*/);
-    using FnChatInputState  = void (__cdecl*)(int /*pid*/, unsigned char /*open*/);
-    using FnCefEvent        = void (__cdecl*)(int /*pid*/, int /*browser*/, const char* /*name*/, int /*argc*/, const CefArg* /*args*/);
+    using FnInitialize      = void (*)(int /*pid*/, unsigned char /*success*/, int /*reason*/, const char* /*message*/);
+    using FnReady           = void (*)(int);
+    using FnBrowserCreated  = void (*)(int /*pid*/, int /*browser*/, unsigned char /*success*/, int /*code*/, const char* /*reason*/);
+    using FnPlayerOnly      = void (*)(int);
+    using FnPressKey        = void (*)(int /*pid*/, int /*key*/, int /*scan*/, int /*mod*/, unsigned char /*down*/, unsigned char /*repeat*/);
+    using FnChatInputState  = void (*)(int /*pid*/, unsigned char /*open*/);
+    using FnCefEvent        = void (*)(int /*pid*/, int /*browser*/, const char* /*name*/, int /*argc*/, const CefArg* /*args*/);
 
     FnInitialize     cb_initialize     = nullptr;
     FnReady          cb_ready          = nullptr;
