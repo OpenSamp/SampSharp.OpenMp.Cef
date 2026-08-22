@@ -100,7 +100,8 @@ with `-DOMP_SDK_DIR=<path>` if your layout differs.
 
 ## License
 
-Apache-2.0.
+Apache-2.0 -- see [LICENSE](LICENSE). That covers the bindings in this
+repository; omp-cef itself is licensed separately by its authors.
 
 ---
 
