@@ -1,6 +1,6 @@
 # SampSharp.OpenMp.Cef
 
-Managed C# bindings for [omp-cef](https://github.com/Pandreex/omp-cef) on open.mp x64,
+Managed C# bindings for [omp-cef](https://github.com/aurora-mp/omp-cef) on open.mp x64,
 for gamemodes running on the SampSharp open.mp host. Lets C# code create and drive CEF
 browsers on the client — fullscreen HUD overlays, browsers painted onto world object
 textures, world-anchored 2D surfaces — and exchange events with the JavaScript running
